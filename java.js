@@ -1,5 +1,3 @@
-let teddy = "hello"
-console.log(teddy)
 
 function gradeCalc (gradeOne, gradeTwo, gradeThree, gradeFour) {
     finalGrade = (gradeOne + gradeTwo + gradeThree + gradeFour) / 4 // retrieve average
@@ -22,17 +20,66 @@ function gradeCalc (gradeOne, gradeTwo, gradeThree, gradeFour) {
 
 
 
-let x = Math.floor(Math.random() * 3) // values of 0,1,2
-console.log(x) 
 
-function computerPlay() {
-    selection = Math.floor(Math.random() * 3)
-    if (selection === 0){
-        console.log("rock")
-    } else if (selection === 1) {
-        console.log("paper")
-    } else {
-        console.log("scissors")
+////generates number 0-2 then outputs rock/paper/scissors string
+//function computerPlayOne() {
+//    selection = Math.floor(Math.random() * 3) ///generate number 0-2
+//    if (selection === 0){
+//        return "rock"
+//    } else if (selection === 1) {
+//        return "paper"
+//    } else {
+//        return "scissors"
+//    }
+//}
+
+
+
+    function computerPlay (actions) {
+        actions = ["rock", "paper", "scissors"]
+        selector = actions[Math.floor(Math.random() *actions.length)];
+        return selector;
     }
-}
-function rockPaperScissors (playerSelection, computerSelection)
+
+    //two parameters playerSelection and computerSelection
+    //play round
+    //return a string that declares the winner
+
+    //user inputs: rock, paper or scissors
+    ///
+
+
+
+    function roundOne (playerSelection, computerSelection) {
+        playerSelection = prompt("Choose rock OR paper OR scissors")
+
+        computerSelection = computerPlay()
+       
+        if (playerSelection == computerSelection) {
+            return "It's a tie!"
+        } 
+        else if (playerSelection == "rock" && computerSelection == "scissors") {
+        return "You WIN! Rock beats Scissors."
+        }
+        else if (playerSelection == "rock" && computerSelection == "paper") {
+            return "You LOSE! Paper beats Rock."
+        }
+        else if (playerSelection == "paper" && computerSelection == "rock") {
+            return "You WIN! paper beats Rock."
+        }
+        else if (playerSelection == "paper" && computerSelection == "scissors") {
+            return "You LOSE! Scissors beats Paper."
+        }
+        else if (playerSelection == "scissors" && computerSelection == "rock") {
+            return "You LOSE! Rock beats Scissors."
+        }
+        else {
+            return "You WIN! Scissors beats Paper."
+        }
+
+        
+     }
+
+    let computerSelection = computerPlay()
+    let playerSelection = ("rock")
+    console.log(roundOne(playerSelection, computerSelection))
