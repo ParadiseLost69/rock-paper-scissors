@@ -50,36 +50,73 @@ function gradeCalc (gradeOne, gradeTwo, gradeThree, gradeFour) {
 
 
 
-    function roundOne (playerSelection, computerSelection) {
-        playerSelection = prompt("Choose rock OR paper OR scissors")
+   function roundOne (playerSelection, computerSelection) {
+       playerSelection = prompt("Choose rock OR paper OR scissors")
+       ;
+       computerSelection = computerPlay()
+      
+       if (playerSelection == computerSelection) {
+           return "It's a tie!"
+       } 
+       else if (playerSelection == "rock" && computerSelection == "scissors") {
+       return "You WIN! Rock beats Scissors."
+       }
+       else if (playerSelection == "rock" && computerSelection == "paper") {
+           return "You LOSE! Paper beats Rock."
+       }
+       else if (playerSelection == "paper" && computerSelection == "rock") {
+           return "You WIN! paper beats Rock."
+       }
+       else if (playerSelection == "paper" && computerSelection == "scissors") {
+           return "You LOSE! Scissors beats Paper."
+       }
+       else if (playerSelection == "scissors" && computerSelection == "rock") {
+           return "You LOSE! Rock beats Scissors."
+       }
+       else if (playerSelection == "scissors" && computerSelection == "rock") {
+           return "You WIN! Scissors beats Paper."
+        }
+        else
+        return "Please try again"
+    }
 
-        computerSelection = computerPlay()
-       
-        if (playerSelection == computerSelection) {
-            return "It's a tie!"
-        } 
-        else if (playerSelection == "rock" && computerSelection == "scissors") {
-        return "You WIN! Rock beats Scissors."
-        }
-        else if (playerSelection == "rock" && computerSelection == "paper") {
-            return "You LOSE! Paper beats Rock."
-        }
-        else if (playerSelection == "paper" && computerSelection == "rock") {
-            return "You WIN! paper beats Rock."
-        }
-        else if (playerSelection == "paper" && computerSelection == "scissors") {
-            return "You LOSE! Scissors beats Paper."
-        }
-        else if (playerSelection == "scissors" && computerSelection == "rock") {
-            return "You LOSE! Rock beats Scissors."
-        }
-        else {
-            return "You WIN! Scissors beats Paper."
+
+    function game() {
+        for (let i = 0; i<5; i++) {
+            console.log (roundOne(playerSelection, computerSelection))
         }
 
-        
-     }
+    }
 
-    let computerSelection = computerPlay()
-    let playerSelection = ("rock")
-    console.log(roundOne(playerSelection, computerSelection))
+
+
+
+
+
+
+
+
+
+
+
+
+ //   function playARound(playerSelection, computerSelection) {
+ //       computerSelection = computerPlay()
+ //       if (playerSelection == computerSelection) {
+ //           return "It's a tie!"
+ //       }
+ //       switch (playerSelection) {
+ //           case "rock":
+ //               switch (computerSelection) {
+ //                   case "scissors":
+ //                       return "you win"
+ //                   break;
+ //                   case "paper":
+ //                       return "you lose"
+ //                   default:
+ //                   return "Try again."
+ //               }
+//
+ //       }
+//         THIS IS A GOOD EXAMPLE OF HOW TO USE NESTED SWITCHES
+ //   }
