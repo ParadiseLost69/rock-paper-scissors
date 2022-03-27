@@ -81,10 +81,7 @@ function gradeCalc (gradeOne, gradeTwo, gradeThree, gradeFour) {
     }
 
 
-    function game() {
-        for (let i = 0; i<5; i++) {
-            console.log (roundOne(playerSelection, computerSelection))
-        }
+
 
     }
 
