@@ -1,89 +1,107 @@
 
-function gradeCalc (gradeOne, gradeTwo, gradeThree, gradeFour) {
-    finalGrade = (gradeOne + gradeTwo + gradeThree + gradeFour) / 4 // retrieve average
-    if (finalGrade < 50) {
-        console.log ("Your grade is " + finalGrade + " YOU ARE FAILING")  //indicate failing grade
-    } else {
-        console.log ("Your grade is " + finalGrade + " Keep trying your best!") //indicate passing grade
-    }
-
-    
-    console.log (finalGrade)
-}
-
-//randomly returns ROCK PAPER or SCISSORS
-// set var R P S
-//use random to select
-//output selection
-//make random number - if 0 display rock, if 1 display paper, if 2 display scissors
-
-
-
-
-
-////generates number 0-2 then outputs rock/paper/scissors string
-//function computerPlayOne() {
-//    selection = Math.floor(Math.random() * 3) ///generate number 0-2
-//    if (selection === 0){
-//        return "rock"
-//    } else if (selection === 1) {
-//        return "paper"
-//    } else {
-//        return "scissors"
-//    }
-//}
-
-
-
+    //generates R,P,S randomly
     function computerPlay (actions) {
         actions = ["rock", "paper", "scissors"]
         selector = actions[Math.floor(Math.random() *actions.length)];
         return selector;
     }
 
-    //two parameters playerSelection and computerSelection
-    //play round
-    //return a string that declares the winner
 
-    //user inputs: rock, paper or scissors
-    ///
+    //enter your name
+    let playerName = prompt("Please enter your name") + (": ")
 
 
+   //score counter
+   let playerScore = 0
+   let computerScore = 0
 
+
+    //plays a game
    function roundOne (playerSelection, computerSelection) {
-       playerSelection = prompt("Choose rock OR paper OR scissors")
-       ;
-       computerSelection = computerPlay()
+       playerSelection;
+       
+       computerSelection = computerPlay();
       
-       if (playerSelection == computerSelection) {
-           return "It's a tie!"
-       } 
-       else if (playerSelection == "rock" && computerSelection == "scissors") {
-       return "You WIN! Rock beats Scissors."
-       }
-       else if (playerSelection == "rock" && computerSelection == "paper") {
-           return "You LOSE! Paper beats Rock."
-       }
-       else if (playerSelection == "paper" && computerSelection == "rock") {
-           return "You WIN! paper beats Rock."
-       }
-       else if (playerSelection == "paper" && computerSelection == "scissors") {
-           return "You LOSE! Scissors beats Paper."
-       }
-       else if (playerSelection == "scissors" && computerSelection == "rock") {
-           return "You LOSE! Rock beats Scissors."
-       }
-       else if (playerSelection == "scissors" && computerSelection == "rock") {
-           return "You WIN! Scissors beats Paper."
+            if (playerSelection == computerSelection) {
+                console.log ("It's a tie!")
+            } 
+            else if (playerSelection == "rock" && computerSelection == "scissors") {
+                playerScore +=1;
+                console.log ("You WIN! Rock beats Scissors. " + playerName + playerScore + " Computer: " + computerScore)
+            }
+            else if (playerSelection == "rock" && computerSelection == "paper") {
+                computerScore+=1;
+                console.log("You LOSE! Paper beats Rock." + playerName + playerScore + " Computer: " + computerScore)
+            }
+            else if (playerSelection == "paper" && computerSelection == "rock") {
+                playerScore +=1;
+                console.log ("You WIN! paper beats Rock." +  playerName  + playerScore + " Computer: " + computerScore)
+            }
+            else if (playerSelection == "paper" && computerSelection == "scissors") {
+                computerScore+=1
+                console.log ("You LOSE! Scissors beats Paper. " + playerName + playerScore + " Computer: " + computerScore)
+            }
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
+                computerScore+=1
+                console.log ("You LOSE! Rock beats Scissors." + playerName + playerScore + " Computer: " + computerScore)
+            }
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
+                playerScore+=1
+                console.log("You WIN! Scissors beats Paper." + playerName + playerScore + " Computer: " + computerScore)
+             }
+             else
+             return "Please try again"
+         }
+
+    function game() {
+        for (let i = 0; i<5; i++) {
+            console.log (roundOne(playerSelection, computerSelection))
         }
-        else
-        return "Please try again"
-    }
-
-
-
 
     }
+
+    // Button ui
+    const container = document.querySelector("#container")
+    
+    const rock = document.createElement("button")
+    rock.textContent = "ROCK"
+    rock.addEventListener ("click", function () {
+        roundOne("rock")
+    })
+    container.appendChild(rock)
+
+    const paper = document.createElement("button")
+    paper.textContent = "Paper"
+    paper.addEventListener ("click", function () {
+        roundOne("paper")
+    })
+    container.appendChild(paper)
+
+    const scissors = document.createElement("button");
+    scissors.textContent = "Scissors"
+    scissors.addEventListener ("click", function () {
+        roundOne("scissors")
+    })
+    container.appendChild(scissors)
+
+
+    //player score counter
+    const scoreField = document.querySelector("#score");
+    let playerScoreCounter = document.createElement ("div")
+    playerScoreCounter.classList.add = ("player-score")
+    playerScoreCounter.textContent = "Player Score is: " + playerScore
+    scoreField.appendChild(playerScoreCounter)
+
+    //computer score counter
+    let computerScoreCounter = document.createElement ("div")
+    computerScoreCounter.classList.add = ("computer-score")
+    computerScoreCounter.textContent = ("Computer Score is: ") + computerScore
+    scoreField.appendChild (computerScoreCounter)
+
+
+
+    
+
 
 
 
